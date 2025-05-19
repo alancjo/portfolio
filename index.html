@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio profissional">
+    <title>Portfólio de [Seu Nome]</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <button class="menu-link" onclick="showSection('sobre')">Sobre mim</button>
+        <button class="menu-link" onclick="showSection('formacao')">Formação</button>
+        <button class="menu-link" onclick="showSection('portfolio')">Portfólio</button>
+        <button class="menu-link" onclick="showSection('contato')">Contato</button>
+    </nav>
+    <main>
+        <section id="sobre" class="conteudo">
+            <h1>Sobre mim</h1>
+            <p>Olá! Meu nome é [Seu Nome]. Gosto de [seus hobbies]. Sou apaixonado(a) por tecnologia e desenvolvimento web.</p>
+        </section>
+        <section id="formacao" class="conteudo" style="display:none;">
+            <h1>Formação</h1>
+            <p>Curso: [Seu curso]<br>
+            Instituição: [Sua instituição]<br>
+            Idiomas: [Seus idiomas]</p>
+        </section>
+        <section id="portfolio" class="conteudo" style="display:none;">
+            <h1>Portfólio</h1>
+            <ul>
+                <li><a href="https://exemplo1.com" target="_blank">Projeto 1</a></li>
+                <li><a href="https://exemplo2.com" target="_blank">Projeto 2</a></li>
+            </ul>
+        </section>
+        <section id="contato" class="conteudo" style="display:none;">
+            <h1>Contato</h1>
+            <form>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="mensagem">Mensagem:</label>
+                <textarea id="mensagem" name="mensagem" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
