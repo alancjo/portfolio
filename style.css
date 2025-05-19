@@ -1,5 +1,6 @@
+/* Variáveis globais para temas e estilos */
 :root {
-    /* Light theme */
+    /* Tema claro (padrão) */
     --primary-color: #3b82f6;
     --secondary-color: #2563eb;
     --text-color: #1f2937;
@@ -13,6 +14,7 @@
     --spacing-unit: 1rem;
 }
 
+/* Tema escuro */
 [data-theme="dark"] {
     --primary-color: #60a5fa;
     --secondary-color: #3b82f6;
@@ -24,6 +26,7 @@
     --shadow-color: rgba(0, 0, 0, 0.3);
 }
 
+/* Estilos base */
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--background-color);
@@ -35,6 +38,7 @@ body {
     transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
+/* Navegação */
 nav {
     background: var(--card-background);
     padding: 1.2rem;
@@ -50,6 +54,7 @@ nav {
     transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
 }
 
+/* Botão de alternar tema */
 .theme-toggle {
     position: absolute;
     right: 2rem;
@@ -68,6 +73,7 @@ nav {
     background: var(--shadow-color);
 }
 
+/* Links do menu */
 .menu-link {
     border: none;
     background: transparent;
@@ -92,6 +98,7 @@ nav {
     background: var(--shadow-color);
 }
 
+/* Conteúdo principal */
 main {
     margin-top: 100px;
     padding: 2rem;
@@ -100,6 +107,7 @@ main {
     margin-right: auto;
 }
 
+/* Seções de conteúdo */
 .conteudo {
     background: var(--card-background);
     padding: 3rem;
@@ -117,6 +125,7 @@ main {
     transform: translateY(0);
 }
 
+/* Títulos */
 h1 {
     color: var(--primary-color);
     font-size: 2.8rem;
@@ -139,6 +148,7 @@ h1::after {
     border-radius: 2px;
 }
 
+/* Parágrafos */
 p {
     font-size: 1.1rem;
     line-height: 1.8;
@@ -150,6 +160,7 @@ p {
     margin-right: auto;
 }
 
+/* Formulário */
 form {
     display: flex;
     flex-direction: column;

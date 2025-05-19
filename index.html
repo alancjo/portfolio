@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <!-- Meta tags e configurações básicas -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfólio profissional">
     <title>Portfólio de [Seu Nome]</title>
+
+    <!-- Fontes e estilos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,6 +15,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Barra de navegação -->
     <nav>
         <button class="menu-link" onclick="showSection('sobre')">Sobre mim</button>
         <button class="menu-link" onclick="showSection('formacao')">Formação</button>
@@ -21,17 +25,24 @@
             <i class="fas fa-moon"></i>
         </button>
     </nav>
+
+    <!-- Conteúdo principal -->
     <main>
+        <!-- Seção Sobre -->
         <section id="sobre" class="conteudo">
             <h1>Sobre mim</h1>
             <p>Olá! Meu nome é [Seu Nome]. Gosto de [seus hobbies]. Sou apaixonado(a) por tecnologia e desenvolvimento web.</p>
         </section>
+
+        <!-- Seção Formação -->
         <section id="formacao" class="conteudo" style="display:none;">
             <h1>Formação</h1>
             <p>Curso: [Seu curso]<br>
             Instituição: [Sua instituição]<br>
             Idiomas: [Seus idiomas]</p>
         </section>
+
+        <!-- Seção Portfólio -->
         <section id="portfolio" class="conteudo" style="display:none;">
             <h1>Portfólio</h1>
             <ul>
@@ -39,6 +50,8 @@
                 <li><a href="https://exemplo2.com" target="_blank">Projeto 2</a></li>
             </ul>
         </section>
+
+        <!-- Seção Contato -->
         <section id="contato" class="conteudo" style="display:none;">
             <h1>Contato</h1>
             <form>
@@ -52,6 +65,8 @@
             </form>
         </section>
     </main>
+
+    <!-- Scripts -->
     <script src="script.js"></script>
 </body>
 </html>
