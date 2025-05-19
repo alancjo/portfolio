@@ -2,37 +2,26 @@
  * Gerenciamento de tema
  */
 function toggleTheme() {
-    const body = document.body;
-    const themeToggle = document.querySelector('.theme-toggle i');
-    const isDark = body.getAttribute('data-theme') === 'dark';
-
-    // Alterna entre temas e atualiza o ícone
-    if (isDark) {
-        body.removeAttribute('data-theme');
-        themeToggle.classList.replace('fa-sun', 'fa-moon');
-    } else {
-        body.setAttribute('data-theme', 'dark');
-        themeToggle.classList.replace('fa-moon', 'fa-sun');
-    }
-
-    // Salva a preferência do usuário
-    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    const isDark = document.body.classList.toggle('dark-theme');
+    const icon = document.querySelector('.theme-toggle i');
+    icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
 }
 
 /**
  * Navegação entre seções
  */
 function showSection(sectionId) {
-    // Atualiza estado dos botões do menu
+    // Atualiza botões do menu
     updateMenuButtons(sectionId);
 
-    // Atualiza visibilidade das seções
+    // Atualiza seções
     updateSections(sectionId);
 
-    // Anima elementos da seção
+    // Anima conteúdo
     animateSectionContent(sectionId);
 
-    // Rola suavemente para a seção
+    // Scroll suave
     scrollToSection(sectionId);
 }
 
@@ -40,10 +29,8 @@ function showSection(sectionId) {
  * Atualiza o estado dos botões do menu
  */
 function updateMenuButtons(sectionId) {
-    document.querySelectorAll('.menu-link').forEach(link => {
-        link.classList.toggle('active',
-            link.textContent.toLowerCase().includes(sectionId)
-        );
+    document.querySelectorAll('.menu-link').forEach(button => {
+        button.classList.toggle('active', button.getAttribute('onclick').includes(sectionId));
     });
 }
 
@@ -51,15 +38,9 @@ function updateMenuButtons(sectionId) {
  * Atualiza a visibilidade das seções
  */
 function updateSections(sectionId) {
-    document.querySelectorAll('.conteudo').forEach(sec => {
-        sec.style.display = 'none';
-        sec.classList.remove('active');
+    document.querySelectorAll('.conteudo').forEach(section => {
+        section.style.display = section.id === sectionId ? 'block' : 'none';
     });
-
-    const targetSection = document.getElementById(sectionId);
-    targetSection.style.display = 'block';
-    void targetSection.offsetWidth; // Força reflow
-    targetSection.classList.add('active');
 }
 
 /**
@@ -67,14 +48,13 @@ function updateSections(sectionId) {
  */
 function animateSectionContent(sectionId) {
     const section = document.getElementById(sectionId);
-    const elements = section.querySelectorAll('h1, p, li, label, input, textarea, button');
+    section.style.opacity = '0';
+    section.style.transform = 'translateY(20px)';
 
-    elements.forEach((element, index) => {
-        element.classList.remove('animate-text');
-        void element.offsetWidth;
-        element.classList.add('animate-text');
-        element.style.animationDelay = `${index * 0.1}s`;
-    });
+    setTimeout(() => {
+        section.style.opacity = '1';
+        section.style.transform = 'translateY(0)';
+    }, 50);
 }
 
 /**
@@ -82,29 +62,61 @@ function animateSectionContent(sectionId) {
  */
 function scrollToSection(sectionId) {
     const section = document.getElementById(sectionId);
-    window.scrollTo({
-        top: section.offsetTop - 100,
-        behavior: 'smooth'
-    });
+    section.scrollIntoView({ behavior: 'smooth' });
+}
+
+/**
+ * Gerenciamento do formulário de contato
+ */
+function handleSubmit(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const formData = new FormData(form);
+
+    // Configuração do EmailJS
+    const templateParams = {
+        from_name: formData.get('nome'),
+        from_email: formData.get('email'),
+        message: formData.get('mensagem'),
+        to_email: 'alancjobm@gmail.com'
+    };
+
+    // Envia email usando EmailJS
+    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+        .then(function(response) {
+            alert('Mensagem enviada com sucesso!');
+            form.reset();
+        }, function(error) {
+            alert('Erro ao enviar mensagem. Por favor, tente novamente.');
+            console.error('Erro:', error);
+        });
+
+    return false;
 }
 
 /**
  * Inicialização da aplicação
  */
-document.addEventListener('DOMContentLoaded', () => {
-    // Inicia com a seção "sobre"
-    showSection('sobre');
-
+document.addEventListener('DOMContentLoaded', function() {
     // Carrega tema salvo
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
-        document.body.setAttribute('data-theme', 'dark');
-        document.querySelector('.theme-toggle i').classList.replace('fa-moon', 'fa-sun');
+        document.body.classList.add('dark-theme');
+        document.querySelector('.theme-toggle i').className = 'fas fa-sun';
     }
 
-    // Adiciona efeitos de hover nos cards do portfólio
-    document.querySelectorAll('#portfolio li').forEach(item => {
-        item.addEventListener('mouseenter', () => item.style.transform = 'translateY(-5px)');
-        item.addEventListener('mouseleave', () => item.style.transform = 'translateY(0)');
+    // Mostra primeira seção
+    showSection('sobre');
+
+    // Adiciona efeito hover nos itens do portfólio
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+        });
+
+        item.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
     });
 });

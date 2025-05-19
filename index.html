@@ -4,8 +4,8 @@
     <!-- Meta tags e configurações básicas -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfólio profissional">
-    <title>Portfólio de [Seu Nome]</title>
+    <meta name="description" content="Portfólio profissional de Alan Carlos Jorge de Oliveira - Desenvolvedor Full Stack">
+    <title>Alan Carlos Jorge - Desenvolvedor Full Stack</title>
 
     <!-- Fontes e estilos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,36 +31,99 @@
         <!-- Seção Sobre -->
         <section id="sobre" class="conteudo">
             <h1>Sobre mim</h1>
-            <p>Olá! Meu nome é [Seu Nome]. Gosto de [seus hobbies]. Sou apaixonado(a) por tecnologia e desenvolvimento web.</p>
+            <p>Olá! Sou Alan Carlos Jorge de Oliveira, Desenvolvedor Full Stack com mais de 4 anos de experiência.</p>
+            <p>Especializado em Ruby on Rails e tecnologias web modernas, como Vue.js. Tenho forte atuação em produtos escaláveis, com grande volume de dados e integrações com ERPs como SAP e Oracle.</p>
+            <p>Experiência sólida com Clean Architecture, DDD, mensageria (RabbitMQ), background jobs (Sidekiq) e testes automatizados (RSpec/Minitest).</p>
+            <p>Além da programação, sou um entusiasta de motos (tenho uma Fz25 e já fiz uma viagem de 1100km de Floripa para Barra Mansa-RJ), fã de videogames (The Witcher 3 é meu favorito), praticante de musculação e tenho um husky siberiano chamado Jake.</p>
         </section>
 
         <!-- Seção Formação -->
         <section id="formacao" class="conteudo" style="display:none;">
             <h1>Formação</h1>
-            <p>Curso: [Seu curso]<br>
-            Instituição: [Sua instituição]<br>
-            Idiomas: [Seus idiomas]</p>
+            <div class="formacao-content">
+                <h2>Formação Acadêmica</h2>
+                <p>Uninter - Análise e Desenvolvimento de Sistemas (2024 - 2026)</p>
+                <p>SENAI - Técnico em Eletrônica (2014 – 2015)</p>
+
+                <h2>Experiência Profissional</h2>
+                <div class="experiencia">
+                    <h3>V360 | Back-End Developer</h3>
+                    <p>Remoto/RJ | Mar/2023 - Jan/2025</p>
+                    <ul>
+                        <li>Desenvolvimento de integrações com SAP e Oracle</li>
+                        <li>Uso de Sidekiq, Redis, PostgreSQL, RSpec/Minitest e AWS</li>
+                        <li>Uso de Rails Way, com arquitetura limpa e TDD</li>
+                    </ul>
+                </div>
+
+                <div class="experiencia">
+                    <h3>Beep Saúde | Desenvolvedor Full Stack Jr</h3>
+                    <p>RJ | Mar/2022 - Mar/2023</p>
+                    <ul>
+                        <li>Desenvolvimento full stack com Rails e Vue.js</li>
+                        <li>Práticas de DDD, TDD, Clean Code e Arquitetura Hexagonal</li>
+                    </ul>
+                </div>
+
+                <h2>Principais Tecnologias</h2>
+                <div class="tech-grid">
+                    <div class="tech-category">
+                        <h3>Linguagens</h3>
+                        <p>Ruby - Python - JavaScript - PHP</p>
+                    </div>
+                    <div class="tech-category">
+                        <h3>Frameworks</h3>
+                        <p>Ruby on Rails - Django - Laravel - Vue.js</p>
+                    </div>
+                    <div class="tech-category">
+                        <h3>Banco de Dados</h3>
+                        <p>PostgreSQL - Oracle - MySQL</p>
+                    </div>
+                    <div class="tech-category">
+                        <h3>Outros</h3>
+                        <p>Sidekiq - RabbitMQ - Redis - Git - AWS - VTEX</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Seção Portfólio -->
         <section id="portfolio" class="conteudo" style="display:none;">
             <h1>Portfólio</h1>
-            <ul>
-                <li><a href="https://exemplo1.com" target="_blank">Projeto 1</a></li>
-                <li><a href="https://exemplo2.com" target="_blank">Projeto 2</a></li>
-            </ul>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <h3>Sistema de Caixa Eletrônico</h3>
+                    <p>Desenvolvido em Ruby, este projeto implementa um sistema de caixa eletrônico com arquitetura hexagonal. Inclui funcionalidades de saque e abastecimento, com validações complexas e testes automatizados.</p>
+                    <p><strong>Tecnologias:</strong> Ruby, RSpec, Docker</p>
+                    <a href="https://github.com/alancjo/desafio-tecnico-caixa-eletronico" target="_blank" class="portfolio-link">
+                        <i class="fab fa-github"></i> Ver no GitHub
+                    </a>
+                </div>
+
+                <div class="portfolio-item">
+                    <h3>Carrinho de Compras API</h3>
+                    <p>API RESTful desenvolvida em Ruby on Rails para gerenciamento de carrinhos de compras. Implementa padrões de arquitetura limpa e inclui testes automatizados.</p>
+                    <p><strong>Tecnologias:</strong> Ruby on Rails, PostgreSQL, RSpec</p>
+                    <a href="https://github.com/alancjo/desafio-tecnico-carrinho-de-compras-rails-api" target="_blank" class="portfolio-link">
+                        <i class="fab fa-github"></i> Ver no GitHub
+                    </a>
+                </div>
+            </div>
         </section>
 
         <!-- Seção Contato -->
         <section id="contato" class="conteudo" style="display:none;">
             <h1>Contato</h1>
-            <form>
+            <form id="contactForm" onsubmit="return handleSubmit(event)">
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome" required>
+
                 <label for="email">E-mail:</label>
                 <input type="email" id="email" name="email" required>
+
                 <label for="mensagem">Mensagem:</label>
                 <textarea id="mensagem" name="mensagem" required></textarea>
+
                 <button type="submit">Enviar</button>
             </form>
         </section>
