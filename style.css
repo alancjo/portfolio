@@ -1,13 +1,27 @@
 :root {
-    --primary-color: #2563eb;
-    --secondary-color: #1e40af;
+    /* Light theme */
+    --primary-color: #3b82f6;
+    --secondary-color: #2563eb;
     --text-color: #1f2937;
-    --background-color: #f8fafc;
-    --card-background: #ffffff;
-    --accent-color: #3b82f6;
+    --background-color: #ffffff;
+    --card-background: #f8fafc;
+    --accent-color: #60a5fa;
+    --border-color: #e5e7eb;
+    --shadow-color: rgba(0, 0, 0, 0.05);
     --transition-speed: 0.3s;
-    --border-radius: 12px;
+    --border-radius: 16px;
     --spacing-unit: 1rem;
+}
+
+[data-theme="dark"] {
+    --primary-color: #60a5fa;
+    --secondary-color: #3b82f6;
+    --text-color: #f3f4f6;
+    --background-color: #111827;
+    --card-background: #1f2937;
+    --accent-color: #93c5fd;
+    --border-color: #374151;
+    --shadow-color: rgba(0, 0, 0, 0.3);
 }
 
 body {
@@ -18,12 +32,13 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     min-height: 100vh;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
 nav {
     background: var(--card-background);
     padding: 1.2rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px -1px var(--shadow-color);
     position: fixed;
     width: 100%;
     top: 0;
@@ -32,7 +47,25 @@ nav {
     justify-content: center;
     gap: 1rem;
     backdrop-filter: blur(8px);
-    background-color: rgba(255, 255, 255, 0.9);
+    transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.theme-toggle {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all var(--transition-speed);
+}
+
+.theme-toggle:hover {
+    background: var(--shadow-color);
 }
 
 .menu-link {
@@ -51,12 +84,12 @@ nav {
 
 .menu-link:hover {
     color: var(--primary-color);
-    background: rgba(37, 99, 235, 0.1);
+    background: var(--shadow-color);
 }
 
 .menu-link.active {
     color: var(--primary-color);
-    background: rgba(37, 99, 235, 0.1);
+    background: var(--shadow-color);
 }
 
 main {
@@ -71,11 +104,12 @@ main {
     background: var(--card-background);
     padding: 3rem;
     border-radius: var(--border-radius);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px -3px var(--shadow-color);
     opacity: 0;
     transform: translateY(20px);
     transition: all var(--transition-speed);
     margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
 }
 
 .conteudo.active {
@@ -100,7 +134,7 @@ h1::after {
     left: 50%;
     transform: translateX(-50%);
     width: 60px;
-    height: 4px;
+    height: 3px;
     background: var(--accent-color);
     border-radius: 2px;
 }
@@ -124,9 +158,10 @@ form {
     max-width: 600px;
     margin: 0 auto;
     padding: 2rem;
-    background: rgba(255, 255, 255, 0.5);
+    background: var(--background-color);
     border-radius: var(--border-radius);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px -1px var(--shadow-color);
+    border: 1px solid var(--border-color);
 }
 
 label {
@@ -140,16 +175,17 @@ input, textarea {
     width: 100%;
     padding: 1rem;
     font-size: 1rem;
-    border: 2px solid #e5e7eb;
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     transition: all var(--transition-speed);
-    background: white;
+    background: var(--card-background);
+    color: var(--text-color);
 }
 
 input:focus, textarea:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    box-shadow: 0 0 0 3px var(--shadow-color);
 }
 
 textarea {
@@ -175,7 +211,7 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background: var(--secondary-color);
     transform: translateY(-2px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px -1px var(--shadow-color);
 }
 
 /* Estilização da lista de portfólio */
@@ -189,16 +225,17 @@ button[type="submit"]:hover {
 }
 
 #portfolio li {
-    background: white;
+    background: var(--card-background);
     padding: 2rem;
     border-radius: var(--border-radius);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px -1px var(--shadow-color);
     transition: all var(--transition-speed);
+    border: 1px solid var(--border-color);
 }
 
 #portfolio li:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px -3px var(--shadow-color);
 }
 
 #portfolio a {
@@ -229,6 +266,10 @@ button[type="submit"]:hover {
     nav {
         padding: 1rem;
         flex-wrap: wrap;
+    }
+
+    .theme-toggle {
+        right: 1rem;
     }
 
     .menu-link {

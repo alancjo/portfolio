@@ -1,3 +1,21 @@
+// Função para alternar entre tema claro e escuro
+function toggleTheme() {
+    const body = document.body;
+    const themeToggle = document.querySelector('.theme-toggle i');
+
+    if (body.getAttribute('data-theme') === 'dark') {
+        body.removeAttribute('data-theme');
+        themeToggle.classList.remove('fa-sun');
+        themeToggle.classList.add('fa-moon');
+        localStorage.setItem('theme', 'light');
+    } else {
+        body.setAttribute('data-theme', 'dark');
+        themeToggle.classList.remove('fa-moon');
+        themeToggle.classList.add('fa-sun');
+        localStorage.setItem('theme', 'dark');
+    }
+}
+
 function showSection(sectionId) {
     // Atualiza os botões do menu
     const menuLinks = document.querySelectorAll('.menu-link');
@@ -41,9 +59,16 @@ function showSection(sectionId) {
     });
 }
 
-// Inicializa a primeira seção
+// Inicializa a primeira seção e o tema
 document.addEventListener('DOMContentLoaded', () => {
     showSection('sobre');
+
+    // Verifica o tema salvo
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.setAttribute('data-theme', 'dark');
+        document.querySelector('.theme-toggle i').classList.replace('fa-moon', 'fa-sun');
+    }
 
     // Adiciona efeito de hover nos cards do portfólio
     const portfolioItems = document.querySelectorAll('#portfolio li');
